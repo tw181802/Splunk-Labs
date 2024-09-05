@@ -107,8 +107,9 @@ Next Screen:
    - `field4` > `misc`
 
 <img width="813" alt="examplegamesnewfilter" src="https://github.com/user-attachments/assets/caaaea57-f1d0-4316-be19-4125f9cc0eae">
-   Now you can see them listed.
 
+   Now you can see them listed.
+   
 3. Click Versions.
    
 <img width="536" alt="newfieldsgame" src="https://github.com/user-attachments/assets/de7049b3-e285-4233-9152-6c50af5131a8">
@@ -134,3 +135,82 @@ The Others Field Names are we changed are `Action`, `CharacterName`, `CurrentSta
 
 1. Click the arrow (`>`) under the information icon (`i`) in the first event to see which fields are extracted.
 2. Verify that in addition to the delimited fields we created earlier (`misc`, `src`, `time`, `version`), you also see the newly created fields using regular expressions (`Action`, `CharacterName`, `CurrentStanding`, `User`).
+
+# Splunk Lab - Data Models
+
+# Login Screen
+Enter your credentials
+
+<img width="901" alt="loginscreen" src="https://github.com/user-attachments/assets/744e3057-de45-4b16-8cd9-2a82a9ad9f40">
+
+
+## Data Models
+Once logged in click `Settings` > `Data Models`
+
+<img width="887" alt="datamodels1" src="https://github.com/user-attachments/assets/8814dd5c-51f4-4ffe-abda-73026f6a200c">
+
+Click
+
+<img width="885" alt="datamodels2" src="https://github.com/user-attachments/assets/9e54dc01-f26c-4446-8c73-f836ddcc10b1">
+
+I Named this one `ButterCup Games Site Activity` 
+
+<img width="733" alt="dm3" src="https://github.com/user-attachments/assets/ca7058b4-0367-44d1-80c1-457360b00d15">
+
+Click Add Dataset
+<img width="877" alt="dm4" src="https://github.com/user-attachments/assets/91422fb3-9193-4c5a-902d-f1e4952e09f2">
+
+Click Add Event Dataset and name it `Web Request` set Constraints > `index=web sourcetype=access_combined` > Click `Preview`
+
+<img width="879" alt="dm5" src="https://github.com/user-attachments/assets/217f7864-6662-4a21-9a3d-dc84353aa9ac">
+
+Here is example of the preview
+
+<img width="879" alt="dm6" src="https://github.com/user-attachments/assets/c02d4b3e-47ee-4cef-906a-b7472dcac742">
+
+Click `Add Field` > `Auto-Extracted`
+
+<img width="861" alt="dm7" src="https://github.com/user-attachments/assets/0c844153-f85f-447d-8788-d9bb2d9767fe">
+
+Select the checkboxes
+Click the check boxes to select the following fields, and rename them for pivot users as indicated:
+``— action > action taken
+— bytes > size
+— categoryId > product category
+— clientip > client IP
+— date_mday > date_mday 
+— productId > product ID
+— product_name > product name
+— req_time > request time
+— status > status``
+
+<img width="732" alt="dm8" src="https://github.com/user-attachments/assets/1b6895f3-05be-4de1-8c06-07bd6e9e8809">
+
+Click `Add Datasets` > `Child`
+
+<img width="870" alt="dm9" src="https://github.com/user-attachments/assets/6f676112-8ca8-4d25-98a0-78d05a70e2fb">
+
+Verify the events match your constraints. Events from `index=web
+sourcetype=access_combined` should start with an IP address, and contain `GET` or `POST` message fields and web URLs. Note: If the preview does not match the expected results, check
+the Constraints field you typed to ensure there are no mistakes. Keep the Sample: 1,000 events selection at this time. Click Save to save the root event.
+
+<img width="875" alt="dm10" src="https://github.com/user-attachments/assets/ae91b2f4-1f49-4ceb-9a9f-8fb2a758598b">
+
+## Task Add two child events, one for actions that were successful (status<400) and one for actions that failed (status>399.)
+13. Click `Add Dataset` and select `Child`.
+
+    <img width="856" alt="d11" src="https://github.com/user-attachments/assets/a411961b-56fb-4e3b-a20f-8f86935a72f7">
+
+a. In the Dataset Name field, type: `Successful requests`
+b. In the `Additional Constraints` field, type: `status<400`
+
+c. Click `Preview` to see a test sample of your results.<img width="877" alt="d10" src="https://github.com/user-attachments/assets/d49d3fe8-9622-4f69-ab86-3c73f341206e">
+
+d. Verify the events match your constraints. Check the number field value that comes just after the
+string field that starts with the word “GET” or “POST”. The number should be less than 400
+<img width="875" alt="dm10" src="https://github.com/user-attachments/assets/0b5fbca5-60d1-44fc-aedc-f7aaf20d9496">
+
+<img width="856" alt="d11" src="https://github.com/user-attachments/assets/ec68a248-5627-4914-a075-58e768f63798">
+
+
+
