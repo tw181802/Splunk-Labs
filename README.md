@@ -246,13 +246,13 @@ Test your data model by creating a pivot
 
 Select the Web requests dataset.
 In the New Pivot window, change the following:
-— Change Filters from All Time to Last 7 days
-— Split Rows by action taken and click Add To Table
+— Change Filters from All Time to Last `7` days
+— Split Rows by action taken and click `Add To Table`
 
 <img width="647" alt="d18" src="https://github.com/user-attachments/assets/7d41de24-b916-45cb-8d5b-5f193c2edcf4">
 <img width="347" alt="d19" src="https://github.com/user-attachments/assets/46095a1f-87f2-4d6b-b8a3-5739c93192f1">
 
-— Split Columns by date_mday and click Add To Table
+— Split Columns by `date_mday` and click `Add To Table`
 
 <img width="534" alt="d20" src="https://github.com/user-attachments/assets/1aa4b5e9-c8e6-43d9-acdb-d29df6d5ffb6">
 
@@ -268,29 +268,29 @@ b. In the `Eval Expression` field, type: `strftime(_time,"%m-%d %A")`
 <img width="879" alt="d22" src="https://github.com/user-attachments/assets/666b4e73-da8f-413c-8422-d4b787c2198c">
 
 Click Pivot.
-a. Select the Web requests dataset.
-b. Change the time filter to the Last 7 days.
-c. Split Rows by action taken. Click Add To Table.
+a. Select the `Web requests` dataset.
+b. Change the time filter to the Last `7` days.
+c. Split Rows by action taken. Click `Add To Table`.
 d. Split Columns by day. Click Add To Table. (This is the new eval expression field we created in the last task.)
 e. Click Save As and select Dashboard Panel
 
 <img width="809" alt="d26" src="https://github.com/user-attachments/assets/e441a688-3edb-4294-b772-78be2a5dfccb">
+
 For Dashboard Title, type: `Weekly Website Activity`
-g. For Panel Title, type: Shopping cart activity by day
-h. Click Save.
+For Panel Title, type: Shopping cart activity by day
+ Click Save.
 
 
 Verify that you are still in the Search & Reporting app. If necessary, click to expand the Apps menu next
 to the splunk> logo at the top left of the window and choose Search & Reporting. If a window appears
 asking you to take a tour, click Skip.
-8. Navigate to Settings > Data models. Select the Buttercup Games Site Activity data model.
+Navigate to Settings > Data models. Select the Buttercup Games Site Activity data model.
 a. Make sure the Web requests root dataset is selected.
 b. Click Add Field and select Lookup.
 c. From the Lookup Table drop-down list, select http_status_lookup.
 d. For the Input section in the Field in Lookup drop-down list, ensure code is selected.
 e. From the Field in Dataset drop-down list, select status. (You may need to scroll down the list to
-see this value.) This maps the status field in your indexed data to the code column in the lookup
-table.
+see this value.) This maps the status field in your indexed data to the code column in the lookup table.
 
 <img width="606" alt="d28" src="https://github.com/user-attachments/assets/f96bd585-c152-41d1-b0bf-a1d1b39a39b4">
 
@@ -298,27 +298,27 @@ table.
 
 
 For the lookup Output section in the Field in Lookup field, check the description check box.
-g. In the Display Name type: status description.
-h. Click the Preview button. You should see a description column in the results.
+In the Display Name type: status description.
+Click the Preview button. You should see a description column in the results.
 
 <img width="603" alt="d29" src="https://github.com/user-attachments/assets/15264893-4582-48de-8e97-81504332ac38">
 
-Click Pivot.
-a. Select the Web requests dataset.
-b. Change the Filter to Last 7 days.
-c. From Split Rows, add the status description attribute and click Add To Table.
-d. Click the + button to split by another row and add the status attribute. Click Add To Table.
+Click `Pivot`.
+a. Select the `Web requests` dataset.
+b. Change the Filter to Last `7` days.
+c. From Split Rows, add the status description attribute and click `Add To Table`.
+d. Click the + button to split by another row and add the status attribute. Click `Add To Table`.
 
 <img width="820" alt="d30" src="https://github.com/user-attachments/assets/a9854011-77e2-454a-ad9a-ee8874ea72ff">
 
 Verify that in addition to the event count, the table shows two columns, one for status description
 and one for status.
 
-Split Columns by day and click Add To Table.
-g. Click Save As and select Dashboard Panel.
-h. Select Existing and select Weekly Website Activity.
-i. For the Panel Title, type: Web requests summary
-j. Click Save.
+Split Columns by day and click `Add To Table`.
+Click `Save As` and select `Dashboard Panel`.
+Select `Existing` and select `Weekly Website Activity`.
+For the Panel Title, type: `Web requests summary`
+Click Save.
 
 <img width="398" alt="d32" src="https://github.com/user-attachments/assets/fa1049c9-2fb4-4a6c-81e1-ad54b5c13f95">
 
@@ -326,9 +326,9 @@ j. Click Save.
 <img width="864" alt="d33" src="https://github.com/user-attachments/assets/0c2c658f-2dbf-4983-b412-4a107c73a77a">
 
 
-For Field Name, type: day
-d. For Display Name, type: day
-e. Click Preview to verify your eval expression returns results.
+For Field Name, type: `day`
+For Display Name, type: `day`
+Click `Preview` to verify your eval expression returns results.
 
 <img width="834" alt="d17" src="https://github.com/user-attachments/assets/912abcb3-328e-4285-9932-d2d381161bf3">
 
@@ -347,8 +347,8 @@ Select the Column chart icon from the table formats on the left.
 
 ## Accelerated Modules
 
-Navigate to Settings > Data models.
-a. In the Data Models view, ensure that App: All is selected.
+Navigate to `Settings` > `Data models`.
+a. In the Data Models view, ensure that App: `All is selected`.
 b. Click on the Owner: Any drop down and select your username.
 c. You should see only the Buttercup Games Site Activity data model. Verify that the lightning bolt
 icon is grey, showing that the data model is currently not accelerated.
@@ -359,16 +359,38 @@ In the Buttercup Games Site Activity row, select Edit > Clone.
 3. In the Clone Data Model window, prepend “Acc” so that the New Title is “AccButtercup Games Site Activity”. (Note: The New ID field will automatically update.)
 
 <img width="409" alt="d40" src="https://github.com/user-attachments/assets/e6074c8f-457e-4a7b-abc8-6f3b97d76fdc">
-Click Clone.
+Click `Clone`.
 
-In the AccButtercup Games Site Activity row, select Edit > Edit Acceleration
-![Uploading d41.png…]()
-
+In the AccButtercup Games Site Activity row, select Edit > `Edit Acceleration`
 
 
+<img width="582" alt="d41" src="https://github.com/user-attachments/assets/81959a5c-a603-47f1-b0d1-e14ee6f68781">
 
 
+You should see an Add `Acceleration` window with the message “Private models cannot be accelerated.
+Edit permissions before enabling acceleration.” Click on `Edit Permissions`.
+To the right of Display For click on App, and then click the box for Read permissions for Everyone
 
 
+<img width="623" alt="d42" src="https://github.com/user-attachments/assets/31858495-0a5e-4d1b-902f-b306068bbedf">
+
+Click Save to save the new permissions.
+9. In the AccButtercup Games Site Activity row, select Edit > Edit `Acceleration` again, now that
+permissions have been updated.
+a. Click on the `Accelerate` checkbox. Notice the message under the checkbox that reads
+“Acceleration may increase storage and processing costs.”
+b. Leave the Summary Range as 1 Day.
+c. Expand `Advanced Settings` to view additional settings.
+d. Take note of the `Summarization Period`, which is currently set to `*/5 * * * *`. This value is in
+cron format and means that acceleration will run every 5 minutes.
+e. Click `Save`
+
+<img width="401" alt="d43" src="https://github.com/user-attachments/assets/c353e783-ed41-492b-85e8-2dfb0b97a085">
+
+<img width="393" alt="cron" src="https://github.com/user-attachments/assets/a88050d3-8950-49ae-8cd4-0e68988a26c4">
 
 
+<img width="622" alt="d44" src="https://github.com/user-attachments/assets/7ca5f429-7f4f-4cb1-8281-2cd0444b6a05">
+
+
+<img width="860" alt="dashboard" src="https://github.com/user-attachments/assets/cadcfd23-f677-4da7-a76c-e909b335a4d5">
