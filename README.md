@@ -212,5 +212,163 @@ string field that starts with the word “GET” or “POST”. The number shoul
 
 <img width="856" alt="d11" src="https://github.com/user-attachments/assets/ec68a248-5627-4914-a075-58e768f63798">
 
+Save the child dataset.
+Select the Successful requests dataset.
+a. Add a child dataset called `purchases` with an `Additional Constraints` value of `action=purchase`
+`productId=*`.
+b. Click Preview to see a test sample of your results, and verify the events match your constraints.
+
+<img width="705" alt="d12" src="https://github.com/user-attachments/assets/bfe0e705-e1ff-45a6-820e-948c478dcb5b">
+
+Select the Web requests event and add a child dataset named: `Failed requests`
+a. In the `Additional Constraints` field, type: `status>399`
+b. Click `Preview` to see a test sample of your results, and verify the events match your constraints.
+c. Save the child dataset.
+16. Under the Failed requests dataset, add a child dataset named: removed
+a. In the `Additional Constraints` field, type: `action=remove productId=*`
+b. Click `Preview` to see a test sample of your results, and verify the events match your constraints.
+c. Save the child dataset.
+17. Verify your dataset shows the root event as Web requests, with two child datasets (Successful requests
+and Failed requests), each of which has one additional child dataset (purchases and removed)
+
+<img width="711" alt="d13" src="https://github.com/user-attachments/assets/d7c401f2-b981-4b13-b328-ca1218e25773">
+
+<img width="690" alt="d14" src="https://github.com/user-attachments/assets/c3db552f-c616-4b8b-beca-47309d79bbf4">
+
+<img width="860" alt="d15" src="https://github.com/user-attachments/assets/f52f4578-42c6-415f-ae89-c74c47c7f970">
+
+You can see the datasets and childs
+<img width="889" alt="d16" src="https://github.com/user-attachments/assets/28d62b43-f0c1-4b84-a07b-31bd8a6a3e98">
+
+Test your data model by creating a pivot
+
+<img width="850" alt="pivot" src="https://github.com/user-attachments/assets/9794c2ca-9c08-4875-a0f8-87a232250125">
+
+Select the Web requests dataset.
+In the New Pivot window, change the following:
+— Change Filters from All Time to Last 7 days
+— Split Rows by action taken and click Add To Table
+
+<img width="647" alt="d18" src="https://github.com/user-attachments/assets/7d41de24-b916-45cb-8d5b-5f193c2edcf4">
+<img width="347" alt="d19" src="https://github.com/user-attachments/assets/46095a1f-87f2-4d6b-b8a3-5739c93192f1">
+
+— Split Columns by date_mday and click Add To Table
+
+<img width="534" alt="d20" src="https://github.com/user-attachments/assets/1aa4b5e9-c8e6-43d9-acdb-d29df6d5ffb6">
+
+<img width="829" alt="d21" src="https://github.com/user-attachments/assets/30ad4494-36b7-4c8a-90fa-0ff0f30e5dd0">
+
+From the `Add Field` drop-down list on the right, select `Eval Expression.`
+b. In the `Eval Expression` field, type: `strftime(_time,"%m-%d %A")`
+
+<img width="888" alt="d23" src="https://github.com/user-attachments/assets/ae5fe7e9-7059-4ca1-b180-15457cd8f54b">
+
+<img width="690" alt="d24" src="https://github.com/user-attachments/assets/7b99cd91-7933-408f-89af-678a96ea9502">
+
+<img width="879" alt="d22" src="https://github.com/user-attachments/assets/666b4e73-da8f-413c-8422-d4b787c2198c">
+
+Click Pivot.
+a. Select the Web requests dataset.
+b. Change the time filter to the Last 7 days.
+c. Split Rows by action taken. Click Add To Table.
+d. Split Columns by day. Click Add To Table. (This is the new eval expression field we created in the last task.)
+e. Click Save As and select Dashboard Panel
+
+<img width="809" alt="d26" src="https://github.com/user-attachments/assets/e441a688-3edb-4294-b772-78be2a5dfccb">
+For Dashboard Title, type: `Weekly Website Activity`
+g. For Panel Title, type: Shopping cart activity by day
+h. Click Save.
+
+
+Verify that you are still in the Search & Reporting app. If necessary, click to expand the Apps menu next
+to the splunk> logo at the top left of the window and choose Search & Reporting. If a window appears
+asking you to take a tour, click Skip.
+8. Navigate to Settings > Data models. Select the Buttercup Games Site Activity data model.
+a. Make sure the Web requests root dataset is selected.
+b. Click Add Field and select Lookup.
+c. From the Lookup Table drop-down list, select http_status_lookup.
+d. For the Input section in the Field in Lookup drop-down list, ensure code is selected.
+e. From the Field in Dataset drop-down list, select status. (You may need to scroll down the list to
+see this value.) This maps the status field in your indexed data to the code column in the lookup
+table.
+
+<img width="606" alt="d28" src="https://github.com/user-attachments/assets/f96bd585-c152-41d1-b0bf-a1d1b39a39b4">
+
+<img width="407" alt="d27" src="https://github.com/user-attachments/assets/5eb1b384-6da7-4f9f-b503-9a21d4e3039b">
+
+
+For the lookup Output section in the Field in Lookup field, check the description check box.
+g. In the Display Name type: status description.
+h. Click the Preview button. You should see a description column in the results.
+
+<img width="603" alt="d29" src="https://github.com/user-attachments/assets/15264893-4582-48de-8e97-81504332ac38">
+
+Click Pivot.
+a. Select the Web requests dataset.
+b. Change the Filter to Last 7 days.
+c. From Split Rows, add the status description attribute and click Add To Table.
+d. Click the + button to split by another row and add the status attribute. Click Add To Table.
+
+<img width="820" alt="d30" src="https://github.com/user-attachments/assets/a9854011-77e2-454a-ad9a-ee8874ea72ff">
+
+Verify that in addition to the event count, the table shows two columns, one for status description
+and one for status.
+
+Split Columns by day and click Add To Table.
+g. Click Save As and select Dashboard Panel.
+h. Select Existing and select Weekly Website Activity.
+i. For the Panel Title, type: Web requests summary
+j. Click Save.
+
+<img width="398" alt="d32" src="https://github.com/user-attachments/assets/fa1049c9-2fb4-4a6c-81e1-ad54b5c13f95">
+
+
+<img width="864" alt="d33" src="https://github.com/user-attachments/assets/0c2c658f-2dbf-4983-b412-4a107c73a77a">
+
+
+For Field Name, type: day
+d. For Display Name, type: day
+e. Click Preview to verify your eval expression returns results.
+
+<img width="834" alt="d17" src="https://github.com/user-attachments/assets/912abcb3-328e-4285-9932-d2d381161bf3">
+
+
+Select the Column chart icon from the table formats on the left.
+
+<img width="874" alt="d34" src="https://github.com/user-attachments/assets/e25b68b6-576b-47cf-ac8a-b57d560b9fcb">
+
+<img width="785" alt="d36" src="https://github.com/user-attachments/assets/bfca5845-504b-4311-9234-b962cf000901">
+
+
+<img width="695" alt="d37" src="https://github.com/user-attachments/assets/6ec587bf-d835-48a4-ba1f-bf43f4266678">
+
+
+<img width="861" alt="d38" src="https://github.com/user-attachments/assets/473c2398-c96f-4cf0-bb97-6a2c4ec36a0e">
+
+## Accelerated Modules
+
+Navigate to Settings > Data models.
+a. In the Data Models view, ensure that App: All is selected.
+b. Click on the Owner: Any drop down and select your username.
+c. You should see only the Buttercup Games Site Activity data model. Verify that the lightning bolt
+icon is grey, showing that the data model is currently not accelerated.
+
+<img width="818" alt="d39" src="https://github.com/user-attachments/assets/b31372b5-a3a4-4c9c-9fc3-8321e582eff3">
+
+In the Buttercup Games Site Activity row, select Edit > Clone.
+3. In the Clone Data Model window, prepend “Acc” so that the New Title is “AccButtercup Games Site Activity”. (Note: The New ID field will automatically update.)
+
+<img width="409" alt="d40" src="https://github.com/user-attachments/assets/e6074c8f-457e-4a7b-abc8-6f3b97d76fdc">
+Click Clone.
+
+In the AccButtercup Games Site Activity row, select Edit > Edit Acceleration
+![Uploading d41.png…]()
+
+
+
+
+
+
+
 
 
